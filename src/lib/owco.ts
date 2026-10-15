@@ -10,7 +10,7 @@ export type CostLine = {id:string;product:string;unit:string;quantity:string;cos
 export const agvTotal = (lines:CostLine[]) => lines.reduce((sum,line)=>sum+(Number(line.quantity)||0)*(Number(line.cost)||0),0);
 export const reservedTpt = (total:number,mode:'full'|'partial',partial:number) => mode==='full'?total:Math.min(total,Math.max(0,partial));
 export const entryTypes = ['TPT (Transfer)'] as const;
-export const money = (n:number|string) => Number(n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+export const money = (n:number|string|undefined) => Number(n||0).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 export const statuses = ['Shipment Created','Awaiting Review','Awaiting Documents','Received Documents','Clearance Assigned','Filed','Awaiting Telex','Ready for Delivery','Delivered'];
 export const initialActive:Shipment[] = records.active;
 export const initialMaster:Shipment[] = records.master;
