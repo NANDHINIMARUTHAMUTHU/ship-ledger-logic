@@ -4,11 +4,16 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+
+import { OwcoApp } from '@/components/owco/app';
+import { Toaster } from 'sonner';
+import type { Screen } from '@/lib/owco';
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -78,21 +83,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "OWCO.ai | Operations Workspace" },
+      { name: "description", content: "OWCO supply chain operations workspace" },
+      { name: "author", content: "OWCO.ai" },
+      { property: "og:title", content: "OWCO.ai | Operations Workspace" },
+      { property: "og:description", content: "OWCO supply chain operations workspace" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -117,11 +123,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: state => state.location.pathname });
+  const routeScreens: Record<string, Screen> = { "/": "dashboard", "/shipments": "shipments", "/master-records": "master", "/ledger": "ledger", "/meeting": "meeting", "/user-management": "users", "/settings": "settings", "/cha-user": "cha" };
+  const screen = routeScreens[pathname];
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      {screen && <OwcoApp screen={screen} />}
       <Outlet />
+      <Toaster position="bottom-right" richColors />
     </QueryClientProvider>
   );
 }
