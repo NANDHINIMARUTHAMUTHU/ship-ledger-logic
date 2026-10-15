@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- OWCO is a frontend-only mock; persona switching is demonstrative and must never be used as production authorization.
+- Keep the OWCO shell in the root route so preview data and selected persona survive client-side navigation; leaf routes own their metadata.
+- Calculate goods value and TPT reservation through shared pure helpers so business calculations remain testable.
