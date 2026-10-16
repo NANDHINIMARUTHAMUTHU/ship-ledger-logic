@@ -10,3 +10,4 @@
 - [x] Preserve shipment fields/icons, use a Linked Agencies dropdown, and add admin dashboard row editing.
 - [x] Connect ledger transfers to inline payments and saved full/partial TPT calculations.
 - [x] Match screenshot Ledger and Meeting layouts and verify the complete mock flow (22 tests, browser checks and build OK).
+- [x] Run the workspace headline marquee across the full content block with faded edges and hover pause.
