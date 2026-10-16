@@ -11,3 +11,4 @@
 - [x] Connect ledger transfers to inline payments and saved full/partial TPT calculations.
 - [x] Match screenshot Ledger and Meeting layouts and verify the complete mock flow (22 tests, browser checks and build OK).
 - [x] Run the workspace headline marquee across the full content block with faded edges and hover pause.
+- [x] Show one headline per pass at a slow, readable pace, switching to the continuous band only when several headlines exist.

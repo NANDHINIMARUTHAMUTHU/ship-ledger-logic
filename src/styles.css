@@ -37,11 +37,11 @@ th{background:var(--table-header-bg);color:var(--table-header-text)}
 
 .weather-widget{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:500;color:var(--foreground);background:var(--muted);padding:8px 16px;border-radius:10px;white-space:nowrap}.weather-widget svg{color:var(--warning)}
 .headline-bar{position:relative;min-height:38px;width:100%;overflow:hidden;background:color-mix(in oklch,var(--muted) 60%,transparent);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:10px 0;margin:0 0 20px;color:var(--foreground);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.headline-track{display:flex;width:max-content;animation:owco-marquee 18s linear infinite}
+.headline-track{display:flex;width:max-content;animation:owco-marquee 8s linear infinite}
 .headline-track>span{padding-right:80px;white-space:nowrap;font-size:11px;font-weight:500}
 .headline-bar:hover .headline-track{animation-play-state:paused}
 @keyframes owco-marquee{from{transform:translateX(0)}to{transform:translateX(-10%)}}
-.headline-track.single{display:block;position:absolute;top:50%;left:100%;transform:translateY(-50%);white-space:nowrap;font-size:11px;font-weight:500;animation:owco-single 14s linear infinite}
-@keyframes owco-single{0%{left:100%}72%{left:-100%}100%{left:-100%}}
+.headline-track.single{display:block;position:absolute;top:50%;left:100%;transform:translateY(-50%);white-space:nowrap;font-size:11px;font-weight:500;animation:owco-single 60s linear infinite}
+@keyframes owco-single{0%{left:100%}88%{left:-100%}100%{left:-100%}}
 @media(max-width:1100px){.weather-widget{padding:6px 8px}}
 @media(max-width:500px){.weather-widget{display:none}}
