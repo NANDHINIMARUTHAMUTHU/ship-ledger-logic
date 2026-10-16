@@ -6,3 +6,5 @@ export const transferTotal=(entries:LedgerEntry[])=>entries.filter(e=>e.type==='
 export const availableTpt=(entries:LedgerEntry[],shipments:Shipment[],current:string)=>Math.max(0,transferTotal(entries)-shipments.filter(s=>s.vase!==current).reduce((sum,s)=>sum+Number(s.tptReserved||0),0));
 export function paymentTotals(agv:number,paid:number,reserved:number){return {paid,reserved,total:paid+reserved,remaining:Math.max(0,agv-paid-reserved)};}
 export const reservationAmount=(available:number,mode:'full'|'partial',partial:number)=>reservedTpt(available,mode,partial);
+export const transferEntries=(entries:LedgerEntry[])=>entries.filter(e=>e.type==='TPT (Transfer)');
+export const reservedFromLedger=(saved:number|null,available:number)=>saved===null?available:saved;
