@@ -45,3 +45,4 @@ th{background:var(--table-header-bg);color:var(--table-header-text)}
 @keyframes owco-single{0%{left:100%}88%{left:-100%}100%{left:-100%}}
 @media(max-width:1100px){.weather-widget{padding:6px 8px}}
 @media(max-width:500px){.weather-widget{display:none}}
+.entry-chip{display:inline-block;border-radius:4px;padding:3px 8px;font-size:9px;font-weight:600;margin-right:8px;vertical-align:1px}.entry-chip.charge{background:var(--warning-bg);color:var(--warning)}.entry-chip.advance,.entry-chip.transfer{background:var(--success-bg);color:var(--success)}.amt-charge{color:var(--warning);font-weight:600}.amt-paid{color:var(--success);font-weight:600}.amt-negative{color:var(--destructive)}
