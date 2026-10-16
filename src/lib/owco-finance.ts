@@ -8,3 +8,4 @@ export function paymentTotals(agv:number,paid:number,reserved:number){return {pa
 export const reservationAmount=(available:number,mode:'full'|'partial',partial:number)=>reservedTpt(available,mode,partial);
 export const transferEntries=(entries:LedgerEntry[])=>entries.filter(e=>e.type==='TPT (Transfer)');
 export const reservedFromLedger=(saved:number|null,available:number)=>saved===null?available:saved;
+export const latestTransferAmount=(entries:LedgerEntry[])=>{const t=transferEntries(entries);return t.length?Number(t[t.length-1].credit)||0:0;};
