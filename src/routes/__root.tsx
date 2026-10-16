@@ -11,6 +11,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { WorkspaceProvider } from '@/lib/owco-workspace';
 import { OwcoApp } from '@/components/owco/app';
 import { Toaster } from 'sonner';
 import type { Screen } from '@/lib/owco';
@@ -130,7 +131,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      {screen && <OwcoApp screen={screen} />}
+      <WorkspaceProvider>{screen && <OwcoApp screen={screen} />}</WorkspaceProvider>
       <Outlet />
       <Toaster position="bottom-right" richColors />
     </QueryClientProvider>
