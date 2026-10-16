@@ -1,5 +1,5 @@
 import { describe,it,expect } from 'vitest';
-import { availableTpt,paymentTotals,reservationAmount,reservedFromLedger,transferEntries,transferTotal,type LedgerEntry } from './owco-finance';
+import { availableTpt,initialLedgerEntries,latestTransferAmount,paymentTotals,reservationAmount,reservedFromLedger,transferEntries,transferTotal,type LedgerEntry } from './owco-finance';
 import { initialMaster,initialActive } from './owco';
 describe('Connected ledger payments',()=>{
 it('preserves the first screenshot shipment values',()=>expect(initialActive.find(s=>s.vase==='HLBU9787118')).toMatchObject({shp:'TFC',rcv:'GMF',chaDescription:'XF',liner:'OOCL',agv:'25401.6',netWeight:'21168',dos:'62470',be:'9466051'}));
@@ -13,4 +13,8 @@ it('keeps a saved reservation as the TPT Reserved Amount',()=>expect(reservedFro
 it('keeps a saved zero reservation at zero instead of falling back to the ledger',()=>expect(reservedFromLedger(0,20000)).toBe(0));
 it('lists only TPT transfers as the ledger source',()=>expect(transferEntries([...entries,{id:'charge',date:'2026-10-16',description:'Pink Lady',reference:'PI 4496',type:'AGV charge',debit:500,credit:0}]).map(e=>e.reference)).toEqual(['TPT-1']));
 it('does not use a transfer twice across shipments',()=>{const shipment=initialMaster[0];if(!shipment)throw new Error('Missing sample shipment');expect(availableTpt(entries,[{...shipment,vase:'other',tptReserved:'200'}],'current')).toBe(800)});
+it('shows the newest ledger transfer amount, not the whole pool',()=>expect(latestTransferAmount([...entries,{id:'later',date:'2026-10-17',description:'Transfer',reference:'TPT-2',type:'TPT (Transfer)',debit:0,credit:26000}])).toBe(26000));
+it('reads the newest transfer from the sample ledger',()=>expect(latestTransferAmount(initialLedgerEntries)).toBe(14118));
+it('shows nothing reserved when the ledger has no transfer',()=>expect(latestTransferAmount([])).toBe(0));
+
 });
