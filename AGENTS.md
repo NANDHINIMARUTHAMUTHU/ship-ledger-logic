@@ -12,3 +12,6 @@
 - OWCO is a frontend-only mock; persona switching is demonstrative and must never be used as production authorization.
 - Keep the OWCO shell in the root route so preview data and selected persona survive client-side navigation; leaf routes own their metadata.
 - Calculate goods value and TPT reservation through shared pure helpers so business calculations remain testable.
+- Use shared ShipmentFields for add, edit, and details so screenshot fields cannot diverge between forms.
+- Keep workspace preferences in a root-mounted provider; changes apply through CSS tokens and remain frontend-only.
+- Keep calculator estimates in a pure helper and label them as preview estimates because the original pricing formula was not supplied.
