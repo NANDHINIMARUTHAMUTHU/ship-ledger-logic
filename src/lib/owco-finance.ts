@@ -9,3 +9,4 @@ export const reservationAmount=(available:number,mode:'full'|'partial',partial:n
 export const transferEntries=(entries:LedgerEntry[])=>entries.filter(e=>e.type==='TPT (Transfer)');
 export const reservedFromLedger=(saved:number|null,available:number)=>saved===null?available:saved;
 export const latestTransferAmount=(entries:LedgerEntry[])=>{const last=transferEntries(entries).at(-1);return last?Number(last.credit)||0:0;};
+export const transferForFile=(entries:LedgerEntry[],file:string)=>transferEntries(entries).filter(e=>e.file===file).at(-1);
