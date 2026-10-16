@@ -4,7 +4,7 @@ export const themeNames=['Default','Dark','Emerald','Violet','Rose'] as const;
 export type ThemeName=typeof themeNames[number];
 export const tagDefaults={FW:'#ef4444',Orange:'#fb923c',Yellow:'#facc15',Natal:'#22c55e',Blue:'#3b82f6',Purple:'#a855f7',Gray:'#9ca3af'};
 export type Preferences={theme:ThemeName;tableBackground:string;tableText:string;tags:typeof tagDefaults;widget:string;headlines:string[];rate:string};
-export const defaultPreferences:Preferences={theme:'Default',tableBackground:'#f3f4f6',tableText:'#6b7280',tags:tagDefaults,widget:'100',headlines:['Port congestion please clear ASAP'],rate:'95.16'};
+export const defaultPreferences:Preferences={theme:'Default',tableBackground:'#f3f4f6',tableText:'#6b7280',tags:tagDefaults,widget:'100',headlines:['Port congestion please clear ASAP','Vessel ETD confirmed for Thursday'],rate:'95.16'};
 const Context=createContext<{preferences:Preferences;setPreferences:(value:Preferences)=>void}|null>(null);
 export function WorkspaceProvider({children}:{children:ReactNode}){
  const [preferences,setPreferences]=useState(defaultPreferences);
