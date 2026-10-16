@@ -8,7 +8,7 @@ export const defaultPreferences:Preferences={theme:'Default',tableBackground:'#f
 const Context=createContext<{preferences:Preferences;setPreferences:(value:Preferences)=>void}|null>(null);
 export function WorkspaceProvider({children}:{children:ReactNode}){
  const [preferences,setPreferences]=useState(defaultPreferences);
- useEffect(()=>{const root=document.documentElement;root.dataset.theme=preferences.theme.toLowerCase();root.classList.toggle('dark',preferences.theme==='Dark');root.style.setProperty('--table-header-bg',preferences.tableBackground);root.style.setProperty('--table-header-text',preferences.tableText);Object.entries(preferences.tags).forEach(([name,color])=>root.style.setProperty(`--tag-${name.toLowerCase()}`,color));},[preferences]);
+ useEffect(()=>{const root=document.documentElement;root.dataset['theme']=preferences.theme.toLowerCase();root.classList.toggle('dark',preferences.theme==='Dark');root.style.setProperty('--table-header-bg',preferences.tableBackground);root.style.setProperty('--table-header-text',preferences.tableText);Object.entries(preferences.tags).forEach(([name,color])=>root.style.setProperty(`--tag-${name.toLowerCase()}`,color));},[preferences]);
  return <Context.Provider value={{preferences,setPreferences}}>{children}</Context.Provider>;
 }
 export function useWorkspace(){const ctx=useContext(Context);if(!ctx)throw new Error('Workspace provider is required');return ctx;}
