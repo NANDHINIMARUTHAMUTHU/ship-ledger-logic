@@ -7,3 +7,6 @@
 - [x] Restore Meeting notes participants, cost calculator and cost configuration.
 - [x] Restore Settings themes, table colors, tag colors, widget and headlines.
 - [x] Verify the restored flows and screenshot layouts (16 tests and browser flows passed; final build telemetry unavailable).
+- [x] Preserve shipment fields/icons, use a Linked Agencies dropdown, and add admin dashboard row editing.
+- [x] Connect ledger transfers to inline payments and saved full/partial TPT calculations.
+- [x] Match screenshot Ledger and Meeting layouts and verify the complete mock flow (22 tests, browser checks and build OK).

@@ -15,3 +15,5 @@
 - Use shared ShipmentFields for add, edit, and details so screenshot fields cannot diverge between forms.
 - Keep workspace preferences in a root-mounted provider; changes apply through CSS tokens and remain frontend-only.
 - Keep calculator estimates in a pure helper and label them as preview estimates because the original pricing formula was not supplied.
+
+- Keep ledger entries in the root OWCO shell and derive available TPT from transfers less other shipments’ saved reservations; mock navigation must not reset or double-allocate money.
